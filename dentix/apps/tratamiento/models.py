@@ -12,14 +12,6 @@ ESTADOS = (
 )
 
 
-CARA_CHOICES = (
-    (1, 'Distal'),
-    (2, 'Mesial'),
-    (3, 'Oclusal'),
-    (4, 'Incisal'),
-)
-
-
 class Diente(models.Model):
     nombre = models.CharField(max_length=128)
     nro_diente = models.CharField(max_length=128)
@@ -28,22 +20,35 @@ class Diente(models.Model):
         return u'%s - %s' % (self.nro_diente, self.nombre)
 
 
+class Cara(models.Model):
+    nombre = models.CharField(max_length=128)
+
+    def __unicode__(self):
+        return self.nombre
+
+
 class Tratamiento(models.Model):
     fecha = models.DateField()
     paciente = models.ForeignKey(Paciente)
     estado = models.SmallIntegerField(choices=ESTADOS)
-    foto_f3 = models.FileField(upload_to='uploads_imgs', null=True, blank=True)
+    foto_f3 = models.FileField(upload_to='static/dentix/uploads_imgs', null=True, blank=True)
     observaciones = models.TextField(max_length=1024, null=True, blank=True)
 
+    def foto_f3_tag(self):
+        if self.foto_f3:
+            return u'<a href="/%s" target="_blank"><img src="/%s" style="width:500px;" /></a>' % (self.foto_f3.name, self.foto_f3.name)
+        return u''
+    foto_f3_tag.short_description = 'Foto f3 preview'
+    foto_f3_tag.allow_tags = True
 
     def __unicode__(self):
-        return self.paciente.nombre
+        return u'%s, %s' % (self.paciente.apellido, self.paciente.nombre)
 
 
 class DetallePrestacion(models.Model):
     prestacion = models.ForeignKey(Prestacion)
     diente = models.ForeignKey(Diente, null=True, blank=True)
-    cara = models.SmallIntegerField(choices=CARA_CHOICES, null=True, blank=True)
+    cara = models.ForeignKey(Cara, null=True, blank=True)
     tratamiento = models.ForeignKey(Tratamiento)  # Un tratamiento tiene muchos detalles de prestacion
     ficha = models.ForeignKey(Ficha, null=True, blank=True)
 
