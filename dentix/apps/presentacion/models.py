@@ -25,7 +25,7 @@ class Presentacion(models.Model):
 
 class Ficha(models.Model):
     paciente = models.ForeignKey(Paciente)
-    foto_f1 = models.FileField(upload_to='static/dentix/uploads_imgs', null=True, blank=True)
+    foto_f1 = models.FileField(upload_to='uploads_imgs', null=True, blank=True)
     copago = models.DecimalField(max_digits=5, decimal_places=2)
     estampilla = models.DecimalField(max_digits=5, decimal_places=2)
     presentacion = models.ForeignKey(Presentacion)
@@ -42,7 +42,7 @@ class Ficha(models.Model):
 
     def foto_f1_tag(self):
         if self.foto_f1:
-            return u'<a href="/%s" target="_blank"><img src="/%s" style="width:500px;" /></a>' % (self.foto_f1.name, self.foto_f1.name)
+            return u'<a href="/media/%s" target="_blank"><img src="/media/%s" style="width:500px;" /></a>' % (self.foto_f1.name, self.foto_f1.name)
         return u''
     foto_f1_tag.short_description = 'Foto f1 preview'
     foto_f1_tag.allow_tags = True

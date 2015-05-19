@@ -31,12 +31,12 @@ class Tratamiento(models.Model):
     fecha = models.DateField()
     paciente = models.ForeignKey(Paciente)
     estado = models.SmallIntegerField(choices=ESTADOS)
-    foto_f3 = models.FileField(upload_to='static/dentix/uploads_imgs', null=True, blank=True)
+    foto_f3 = models.FileField(upload_to='uploads_imgs', null=True, blank=True)
     observaciones = models.TextField(max_length=1024, null=True, blank=True)
 
     def foto_f3_tag(self):
         if self.foto_f3:
-            return u'<a href="/%s" target="_blank"><img src="/%s" style="width:500px;" /></a>' % (self.foto_f3.name, self.foto_f3.name)
+            return u'<a href="/media/%s" target="_blank"><img src="/media/%s" style="width:500px;" /></a>' % (self.foto_f3.name, self.foto_f3.name)
         return u''
     foto_f3_tag.short_description = 'Foto f3 preview'
     foto_f3_tag.allow_tags = True
