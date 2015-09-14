@@ -1,0 +1,110 @@
+body {
+    background-color: #B4B4B4;
+    color: #202219;
+/*     font-family: arial, verdana, sans-serif; */
+    font-family: Times,serif;
+}
+
+h1, h2, h3  {
+  color : #393a28;
+}
+
+h1  {
+  font-size : 1.5em;
+  border-bottom : 1px dotted black;
+}
+h2 {
+  font-size : 1.3em;
+  margin-top : 3em;
+}
+h3 {
+  font-size : 1.1em;
+}
+h1, h2{
+  text-align : center;
+} 
+
+a, span.title  {
+  color : #393a28;
+}
+.title {
+  font-weight : bold;
+}
+div.section ul {
+  padding-left:1em;
+  padding-right:1em;
+}
+ul {
+  list-style-type : none;
+  padding : 0;
+  margin : 0;
+} 
+
+.main {
+    background-color: #FFFFFF; 
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    margin:0px;
+    padding:0px;
+}
+.header a{
+   color:#FFFFFF;
+   text-decoration:none;	
+}
+.imagenFondoEncabezado{
+	background-image: url("/static/Imagenes/header_2.jpg");
+	height:68px; 
+	
+}
+
+#lastupdate{
+font-size:0.9em;
+font-style:italic;
+text-align:center;
+}
+
+/**************************************Parte del medio de la pagina***************************/
+.content{
+    /*float: left;*/
+	margin-top:20px;
+	/*width:400px;*/
+    margin-left: 5px;
+    min-height:400px;
+
+}
+
+.leftSection{
+	/*width:520px;*/
+	margin-left: 10px;
+	margin-bottom:15px;
+}
+/**********************************Parte derecha de la pagina*********************************/
+.rightSection{
+    float: right;
+    padding: 10px;
+    margin: 34px 0 0 0;	
+}
+/*****************************Pie de la pagina****************************/
+.footer{
+    width:100%;
+    clear: both;
+    margin-top:200px;
+}
+
+.siteInfo{
+    font-size: 11px;
+    color: #999999;
+    padding: 5px 10px 10px 10px;
+    margin-top: -1px;
+    text-align: center;
+}
+.footerBackground{
+	background-image: url("/static/Imagenes/footer_2.jpg");
+	height:16px; 
+
+
+}
